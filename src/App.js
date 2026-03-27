@@ -129,7 +129,7 @@ function PasswordField({ value, onChange, show, setShow, placeholder = "" }) {
         onMouseEnter={(e) => (e.target.style.color = "var(--text-secondary)")}
         onMouseLeave={(e) => (e.target.style.color = "var(--text-muted)")}
       >
-        {show ? "🙈" : "👁"}
+        {show ? "⌣" : "👁"}
       </button>
     </div>
   );
@@ -367,7 +367,7 @@ function App() {
       setNewCostPrice(""); setNewStockQty(""); setNewAlertQty("");
       await loadProducts();
       await loadReport(reportPeriod);
-      alert("Product added and purchase recorded ✅");
+      alert("Product added and purchase recorded ");
     } catch (e2) {
       const msg = e2?.response?.data?.detail || e2?.response?.data || "Failed to add product.";
       alert(typeof msg === "string" ? msg : JSON.stringify(msg));
@@ -448,7 +448,7 @@ function App() {
     try {
       await axios.delete(`${API_BASE}/products/${p.id}`, { params: { shop_id: SHOP_ID } });
       await loadProducts();
-      alert("Product deleted ✅");
+      alert("Product deleted ");
     } catch (e) {
       alert(e?.response?.data?.detail || "Delete failed.");
     }
@@ -750,7 +750,7 @@ function App() {
 
             {!loadingProducts && !productsError && productsWithProfit.length === 0 && (
               <div className="emptyState">
-                <p style={{ fontSize: 36, marginBottom: 8 }}>📭</p>
+                <p style={{ fontSize: 36, marginBottom: 8 }}></p>
                 <p>No products yet. Add your first product above.</p>
               </div>
             )}
@@ -864,7 +864,7 @@ function App() {
           {alertProduct && (
             <div className="modalOverlay" onClick={closeAlertModal}>
               <div className="modal" onClick={(e) => e.stopPropagation()}>
-                <h3>🔔 Set Low Stock Alert</h3>
+                <h3> Set Low Stock Alert</h3>
                 <p className="modalMeta">
                   <strong>{alertProduct.name}</strong> &nbsp;·&nbsp; Current alert at: <strong>{fmtNum(alertProduct.alert_qty)}</strong>
                 </p>
